@@ -1,0 +1,132 @@
+<html>
+<head>
+    <title>Registration form </title>
+    <style>
+#main
+{
+width:650px;
+height:550px;
+border:1px solid black;
+margin:auto;
+background:Pink;
+box-shadow:1px 1px 1px 1px grey;
+}
+#row,#row1,#row2,#row3,#row4,#row5
+{
+width:99%;
+height:40px;
+border:1px solid #F3F3F3;
+}
+.col
+{
+width:32%;
+height:89%;
+border:1px solid #F3F3F3;
+float:left;
+margin-left:2px;
+}
+input
+{
+height:30px;
+width:200px;
+border-radius:2px;
+}
+input{type=submit}
+{
+width:100px;
+}
+input:hover{border:1px solid red}
+input:hover{background:gray}
+input{font-size:25px}
+.r
+{
+width:10px;
+height:15px;
+font-size:10px;
+}
+</style>
+    <script type="text/javascript">
+function chkblnk(eid,errid)
+{
+var x=document.getElementById(eid).value;
+if(x=="")
+{
+document.getElementById(errid).innerHTML="Field is required";
+}
+else
+{
+document.getElementById(errid).innerHTML="";
+}
+}
+
+function chkAplha(event,err)
+{
+if(!((event.which>=65 && event.which<=90) || (event.which>=97 && event.which<=122) || event.which==0 || event.which==8))
+{
+document.getElementById(err).innerHTML="Invalid name format";
+return false;
+}
+}
+
+function chkeid()
+{
+var e=document.getElementById("e").value;
+var atpos=e.indexOf("@");
+var dotpos=e.lastIndexOf(".");
+if(atpos<4 || dotpos<atpos+3)
+{
+document.getElementById("error2").innerHTML="Invalid email";
+}
+else
+{
+document.getElementById("error2").innerHTML="";
+}
+//alert(atpos+" "+dotpos);
+}
+
+
+</script>
+</head>
+<form name=Registration action="https://www.epam.com">
+<body>
+<div id="main">
+    <h1 align="center">Registration Page</h1>
+    <div id="row" style="color:black">
+        <div class="col">Your First Name</div>
+        <div class="col"><input type="text" id="fn"  onkeypress="return chkAplha(event,'error')" onblur="chkblnk('fn','error')"/></div>
+        <div class="col" id="error" style="color:red"></div>
+    </div>
+    <div id="row1" style="color:black">
+        <div class="col">Your Last Name</div>
+        <div class="col"><input type="text" id="ln" onblur="chkblnk('ln','error1')"/></div>
+        <div class="col" id="error1" style="color:red"></div>
+    </div>
+    <div id="row2" style="color:black">
+        <div class="col">Your Email id</div>
+        <div class="col">
+            <input type="text" id="e" onblur="chkeid()"/></div>
+        <div class="col" id="error2" style="color:red"></div>
+    </div>
+    <div id="row3" style="color:black">
+        <div class="col">Your Passord</div>
+        <div class="col"><input type="password" id="p"  onblur="chkblnk('p','error3')"/></div>
+        <div class="col" id="error3" style="color:red"></div>
+    </div>
+    <div id="row4" style="color:black">
+        <div class="col">Confirm Password</div>
+        <div class="col"><input type="password" id="cp"  onblur="chkblnk('cp','error4')"/></div>
+        <div class="col" style="color:red" id="error4"></div>
+    </div>
+    <div id="row5" style="color:black">
+        <div class="col">Your Address</div>
+        <div class="col">
+            <textarea id="adds" onblur="chkblnk('adds','error5')"></textarea></div>
+        <div class="col" style="color:red" id="error5"></div>
+    </div><br>
+    <center><input type=submit value="Register" ></center>
+
+</div>
+
+</form>
+</body>
+</html>
